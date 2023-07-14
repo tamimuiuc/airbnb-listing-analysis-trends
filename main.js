@@ -572,12 +572,10 @@ d3.select('#scene6').style('display', 'block');
 d3.csv('https://raw.githubusercontent.com/tamimuiuc/airbnb-narrative-vis-dataset/main/data/USA-Airbnb-dataset.csv')
     .then(data => {
         // Parsing string values to numeric and dates
-        data = data.map(d => {
+        data = data.filter(d => {
             d.price = +d.price;
             d.number_of_reviews = +d.number_of_reviews;
             d.last_review = new Date(d.last_review);
-            return d;
-        }).filter(d => {
             // Validate data
             return (
                 !isNaN(d.price) &&
@@ -661,7 +659,6 @@ d3.csv('https://raw.githubusercontent.com/tamimuiuc/airbnb-narrative-vis-dataset
                 .style("text-anchor", "middle")
                 .style('font-size', '16px')
                 .text('Count');
-
         // Create bars for the chart with transition
         let barWidth = xScale.bandwidth() / 2;
 
@@ -675,30 +672,6 @@ d3.csv('https://raw.githubusercontent.com/tamimuiuc/airbnb-narrative-vis-dataset
             .style('border-radius', '5px')
             .style('padding', '10px')
             .text('Tooltip');
-
-        // Hosts bars
-        chart.selectAll('.bar-hosts')
-            .data(years)
-            .enter()
-            .append('rect')
-            .attr('class', 'bar-hosts')
-            .attr('x', (d) => xScale(d))
-            .attr('y', (d) => yScale(hostsData[years.indexOf(d)]))
-            .attr('width', barWidth)
-            .attr('height', (d) => chartHeight - yScale(hostsData[years.indexOf(d)]))
-            .style('fill', 'green')
-            .on('mouseover', function (event, d) {
-                let i = years.indexOf(d);
-                tooltip.style('visibility', 'visible')
-                    .text(`Year: ${d} - Hosts: ${hostsData[i]}`);
-            })
-            .on('mousemove', function (event) {
-                tooltip.style('top', (event.pageY - 10) + 'px')
-                    .style('left', (event.pageX + 10) + 'px');
-            })
-            .on('mouseout', function () {
-                tooltip.style('visibility', 'hidden');
-            });
 
         // Listings bars
         chart.selectAll('.bar-listings')
@@ -724,6 +697,30 @@ d3.csv('https://raw.githubusercontent.com/tamimuiuc/airbnb-narrative-vis-dataset
                 tooltip.style('visibility', 'hidden');
             });
 
+        // Hosts bars
+        chart.selectAll('.bar-hosts')
+            .data(years)
+            .enter()
+            .append('rect')
+            .attr('class', 'bar-hosts')
+            .attr('x', (d) => xScale(d))
+            .attr('y', (d) => yScale(hostsData[years.indexOf(d)]))
+            .attr('width', barWidth)
+            .attr('height', (d) => chartHeight - yScale(hostsData[years.indexOf(d)]))
+            .style('fill', 'green')
+            .on('mouseover', function (event, d) {
+                let i = years.indexOf(d);
+                tooltip.style('visibility', 'visible')
+                    .text(`Year: ${d} - Hosts: ${hostsData[i]}`);
+            })
+            .on('mousemove', function (event) {
+                tooltip.style('top', (event.pageY - 10) + 'px')
+                    .style('left', (event.pageX + 10) + 'px');
+            })
+            .on('mouseout', function () {
+                tooltip.style('visibility', 'hidden');
+            });
+
         // Add legend
         const legend = chart.append('g')
             .attr('transform', `translate(${chartWidth - 120}, 0)`);
@@ -731,37 +728,44 @@ d3.csv('https://raw.githubusercontent.com/tamimuiuc/airbnb-narrative-vis-dataset
         // Listings legend
         legend.append('rect')
             .attr('x', 0)
-            .attr('y', 0)
+            .attr('y', -8)
             .attr('width', 10)
             .attr('height', 10)
             .style('fill', 'orange');
 
         legend.append('text')
             .attr('x', 15)
-            .attr('y', 9)
+            .attr('y', 0)
             .attr('alignment-baseline', 'middle')
             .text('Listings');
 
         // Hosts legend
         legend.append('rect')
             .attr('x', 0)
-            .attr('y', 20)
+            .attr('y', 13)
             .attr('width', 10)
             .attr('height', 10)
             .style('fill', 'green');
 
         legend.append('text')
             .attr('x', 15)
-            .attr('y', 29)
+            .attr('y', 20)
             .attr('alignment-baseline', 'middle')
             .text('Hosts');
-    })
-    .catch(error => {
-        console.error(error);
-    });
-  
 
-// scene7
+        // Add title
+        svg.append('text')
+            .attr('x', svgWidth / 2)
+            .attr('y', margin.top)
+            .attr('text-anchor', 'middle')
+            .attr('font-size', '20px')
+            .attr('font-weight', 'bold')
+            .style("fill", "#444")
+            .text('Yearly Airbnb Listings and Hosts')
+    }); 
+    
+
+  // scene7
 // Load data
 d3.csv('https://raw.githubusercontent.com/tamimuiuc/airbnb-narrative-vis-dataset/main/data/USA-Airbnb-dataset.csv')
   .then((data) => {
