@@ -73,17 +73,9 @@ button:hover {
   font-weight: bold;
 }
 
-#scene1 {
+.scene {
   text-align: center;
   color: #444;
-}
-
-#scene2,
-#scene3,
-#scene4,
-#scene5,
-#scene6,
-#scene7 {
   display: none; /* Hide all scenes initially */
   margin: 0 auto;
   max-width: 90%; /* Adjust the max-width as needed */

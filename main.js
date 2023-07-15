@@ -765,7 +765,7 @@ d3.csv('https://raw.githubusercontent.com/tamimuiuc/airbnb-narrative-vis-dataset
     }); 
     
 
-  // scene7
+// scene7
 // Load data
 d3.csv('https://raw.githubusercontent.com/tamimuiuc/airbnb-narrative-vis-dataset/main/data/USA-Airbnb-dataset.csv')
   .then((data) => {
