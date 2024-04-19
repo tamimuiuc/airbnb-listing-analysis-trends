@@ -26,6 +26,12 @@ Each scene is meticulously designed to facilitate an intuitive understanding of 
 ## Live Visualization
 Experience the interactive visualization live: [Airbnb Listing Analysis and Trends](https://tamimuiuc.github.io/airbnb-listing-analysis-trends/).
 
+## Main Page Screenshot
+
+Take a look at the main page of our Airbnb Listing Analysis and Trends visualization:
+
+![Main Page Screenshot]([https://github.com/your-username/your-repository/blob/main/path-to-your-screenshot.png](https://github.com/tamimuiuc/airbnb-listing-analysis-trends/blob/main/Airbnb%20Narrative%20Visualization%20-%20tamimuiuc.github.io.png))
+
 ## Technical Details
 - **Main Technologies Used:** HTML, CSS, JavaScript
 - **Libraries/Frameworks:** Details on any libraries or frameworks used.
