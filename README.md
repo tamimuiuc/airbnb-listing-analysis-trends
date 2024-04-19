@@ -45,9 +45,6 @@ Interested in contributing? Follow these steps:
 4. Push to the branch (`git push origin feature/AmazingFeature`).
 5. Open a pull request.
 
-## License
-Distributed under the MIT License. See `LICENSE` for more information.
-
 ## Contact
 Project Link: [https://github.com/tamimuiuc/airbnb-listing-analysis-trends](https://github.com/tamimuiuc/airbnb-listing-analysis-trends)
 
